@@ -1,0 +1,8 @@
+hazelcast:
+  network:
+    join:
+      multicast:
+        enabled: true
+  map:
+    items:
+      time-to-live-seconds: 600

@@ -1,0 +1,230 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-1">
+        <createTable tableName="book">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="book_pkey"/>
+            </column>
+            <column name="genre" type="VARCHAR(255)"/>
+            <column name="isbn" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="publish_date" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-2">
+        <createTable tableName="publisher_books">
+            <column name="publisher_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-3">
+        <createTable tableName="author">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="author_pkey"/>
+            </column>
+            <column name="mail" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="surname" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-4">
+        <addUniqueConstraint columnNames="isbn" constraintName="uk_ehpdfjpu1jm3hijhj4mm0hx9h" tableName="book"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-5">
+        <addUniqueConstraint columnNames="books_id" constraintName="uk_gyr8g912ixa9bpjlafq3qkqa7" tableName="publisher_books"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-6">
+        <addUniqueConstraint columnNames="mail" constraintName="uk_pdjstx5i7c0jdoa9ptpb0c7d4" tableName="author"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-7">
+        <createTable tableName="address">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_pkey"/>
+            </column>
+            <column name="number" type="VARCHAR(255)"/>
+            <column name="psc" type="VARCHAR(255)"/>
+            <column name="street" type="VARCHAR(255)"/>
+            <column name="town" type="VARCHAR(255)"/>
+            <column name="library_id" type="BIGINT"/>
+            <column name="publisher_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-8">
+        <createTable tableName="author_books">
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authors_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-9">
+        <createTable tableName="author_publishers">
+            <column name="author_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publishers_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authors_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-10">
+        <createTable tableName="book_authors">
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authors_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-11">
+        <createTable tableName="book_libraries">
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="libraries_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-12">
+        <createTable tableName="book_publishers">
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publishers_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-13">
+        <createTable tableName="library">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="library_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="adress_id" type="BIGINT"/>
+            <column name="address_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-14">
+        <createTable tableName="library_books">
+            <column name="library_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="books_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-15">
+        <createTable tableName="publisher">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="publisher_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="adress_id" type="BIGINT"/>
+            <column name="address_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-16">
+        <createTable tableName="publisher_authors">
+            <column name="publisher_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authors_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-17">
+        <addForeignKeyConstraint baseColumnNames="publishers_id" baseTableName="book_publishers" constraintName="fk12hfjay5qsaimcq79q3ylebca" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="publisher" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-18">
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="library_books" constraintName="fk2tq0q7jfgg3w5mgeqxjl24mej" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-19">
+        <addForeignKeyConstraint baseColumnNames="library_id" baseTableName="address" constraintName="fk318mmr2ym5hgqb9nou992m198" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="library" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-20">
+        <addForeignKeyConstraint baseColumnNames="authors_id" baseTableName="book_authors" constraintName="fk551i3sllw1wj7ex6nir16blsm" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-21">
+        <addForeignKeyConstraint baseColumnNames="authors_id" baseTableName="publisher_authors" constraintName="fk5mejuoy7relanuqylkpcj0uc3" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-22">
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="book_publishers" constraintName="fk7bj8d5afgxlg34472o43uujs2" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-23">
+        <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="publisher_books" constraintName="fk9b9tqc2fhqbipdrbatnraxmcr" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="publisher" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-24">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="author_publishers" constraintName="fk9y9kk4frfbc45qv5g95r40piu" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-25">
+        <addForeignKeyConstraint baseColumnNames="library_id" baseTableName="library_books" constraintName="fkcwjjd1vlba8vwjrjkvyaaomqw" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="library" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-26">
+        <addForeignKeyConstraint baseColumnNames="authors_id" baseTableName="author_books" constraintName="fkemnd34muvgwnr8a8pteuqrkxh" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-27">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="author_books" constraintName="fkfvabqdr9njwv4khjqkf1pbmma" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-28">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book_publishers" constraintName="fkhbouhfteb7bcyj5vommtss06n" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-29">
+        <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="address" constraintName="fkhlcshsqrblftja6u07itltxsp" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="publisher" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-30">
+        <addForeignKeyConstraint baseColumnNames="publishers_id" baseTableName="author_publishers" constraintName="fkhuh9a6mmnxdbheouriljerhfs" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="publisher" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-31">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="library" constraintName="fkjmscefe471rdf5av5wbii8vlf" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="address" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-32">
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="book_libraries" constraintName="fkm6bmw57ylwfq5oxy7rb1mcivq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-33">
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="publisher_books" constraintName="fkmiu76amnv8pwaob4qxyk1gvpg" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-34">
+        <addForeignKeyConstraint baseColumnNames="libraries_id" baseTableName="book_libraries" constraintName="fkmyte4jqjt595o9ygt5tgi7he0" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="library" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-35">
+        <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="publisher_authors" constraintName="fkojslxvsg6nel09vd9xsbn8953" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="publisher" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-36">
+        <addForeignKeyConstraint baseColumnNames="books_id" baseTableName="author_books" constraintName="fkr514ej8rhei197wx3nrvp0qie" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-37">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book_libraries" constraintName="fkrcrwntswrl00sanmmo12d86si" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-38">
+        <addForeignKeyConstraint baseColumnNames="authors_id" baseTableName="author_publishers" constraintName="fks34t5ms6rl17ph0g2ke77vxq" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-39">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book_authors" constraintName="fks4xm7q8i3uxvaiswj1c35nnxw" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book" validate="true"/>
+    </changeSet>
+    <changeSet author="vitnademlejnsky (generated)" id="1671117346914-40">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="publisher" constraintName="fksw6h0k6uwmywa01est3ydvj5m" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="address" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
